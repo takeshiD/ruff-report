@@ -23,6 +23,7 @@ dev = ["pytest>=8.0"]
 
 [project.urls]
 Homepage = "https://github.com/takeshid/ruff-report"
+Repository = "https://github.com/takeshid/ruff-report.git"
 
 [project.scripts]
 ruff-report = "ruff_report:main"
