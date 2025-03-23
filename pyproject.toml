@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatching"]
-build-backend = "hatching.build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "ruff-report"
@@ -16,7 +16,11 @@ classifiers = [
 ]
 requires-python = ">=3.11"
 authors = [{ name = "takeshid", email = "goriponikeike55@gmail.com" }]
-dependencies = ["pydantic", "ruff>=0.11"]
+dependencies = [
+    "pydantic>=2.0",
+ "ruff>=0.11",
+ "typer>=0.15.2",
+]
 
 [dependency-groups]
 dev = ["pytest>=8.0"]
@@ -26,21 +30,21 @@ Homepage = "https://github.com/takeshid/ruff-report"
 Repository = "https://github.com/takeshid/ruff-report.git"
 
 [project.scripts]
-ruff-report = "ruff_report:main"
+ruff-report = "ruff_report.cli:app"
 
 [tool.ruff]
 line-length = 88
 indent-width = 4
-include = ["ruff_report", "tests"]
+include = ["ruff_report/**/*.py", "tests/**/*.py"]
 exclude = [".venv"]
 
 [tool.ruff.lint]
 select = ["ALL"]
 fixable = ["ALL"]
-ignore = ["D103", "S603", "D101", "D401", "T201", "DTZ005"]
+ignore = ["D100", "D103", "S603", "D101", "D401", "T201", "DTZ005", "COM", "ANN201"]
 
 [tool.ruff.lint.pydocstyle]
-conbention = "google"
+convention = "google"
 
 [tool.ruff.format]
 quote-style = "double"
@@ -49,3 +53,7 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-format = true
 docstring-code-line-length = "dynamic"
+
+[tool.pytest.ini_options]
+addopts = "-ra -vv"
+testpaths = ["tests"]

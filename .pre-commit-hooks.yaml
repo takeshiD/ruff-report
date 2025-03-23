@@ -1,0 +1,5 @@
+- id: ruff-report
+  name: ruff-report
+  description: "Create ruff violation report"
+  entry: ruff-report save
+  language: python
