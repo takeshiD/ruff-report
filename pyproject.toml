@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatching"]
+build-backend = "hatching.build"
+
+[project]
+name = "ruff-report"
+version = "0.1.0"
+description = "ruff violation report hook for pre-commit"
+readme = "README.md"
+license = "MIT"
+license-files = "LICENSE"
+classifiers = [
+    "Development Status :: 1 - Planning"
+    "Programming Language :: Python :: 3"
+    "Programming Language :: Python :: 3 :: Only"
+]
+requires-python = ">=3.11"
+authors = [
+    { name="takeshid", email="goriponikeike55@gmail.com"}
+]
+dependencies = [
+    "pydantic",
+    "ruff>=0.11",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/takeshid/ruff-report"
+
+[project.scripts]
+ruff-report = "ruff_report:main"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["ALL"]
+fixable = ["ALL"]
+ignore = [
+    "D103",
+    "S603",
+    "D101",
+    "D401",
+    "T201",
+    "DTZ005"
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
